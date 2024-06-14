@@ -25,12 +25,13 @@
                 android:layout_height="56dp"
                 android:id="@+id/toolbar"
                 android:elevation="4dp"
-                android:background="@color/lavender"
+                android:background="@color/Mediumseagreen"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:titleTextAppearance="@style/ToolbarTitleText">
 
                 <ImageButton
+                    android:visibility="gone"
                     android:id="@+id/menu_left"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
@@ -51,7 +52,7 @@
                         android:orientation="horizontal">
                         <TextView
                             android:id="@+id/dinamicTittle"
-                            android:background="@color/lavender"
+                            android:background="@color/Mediumseagreen"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -61,6 +62,7 @@
                             android:layout_gravity="center|center"
                             android:fontFamily="@font/robotoslab_semibold"/>
                         <ImageView
+                            android:visibility="gone"
                             android:id="@+id/ic_chevron"
                             android:layout_marginStart="5dp"
                             android:layout_width="14dp"
@@ -94,15 +96,17 @@
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:paddingVertical="4dp"
                 android:id="@+id/bottom_navigation"
                 app:menu="@menu/bottom_menu"
                 android:background="#ffffff"
-                app:itemIconTint="@color/lavender"
-                app:itemTextColor="@color/lavender"
-                app:itemTextAppearanceActiveBoldEnabled="false"
-                app:itemIconSize="25dp"
+                app:itemPaddingTop="2dp"
+                app:itemTextAppearanceActive="@style/MenuTextAppearanceActive"
+                app:itemTextAppearanceInactive="@style/MenuTextAppearanceInactive"
+                app:itemIconTint="@color/Mediumseagreen"
+                app:itemTextColor="@color/Mediumseagreen"
+                app:itemTextAppearanceActiveBoldEnabled="true"
+                app:itemIconSize="32dp"
                 app:labelVisibilityMode="labeled"/>
         </LinearLayout>
 
@@ -150,7 +154,7 @@
         android:layout_height="match_parent"
         android:id="@+id/nav_view"
         android:layout_gravity="start"
-        android:visibility="visible"
+        android:visibility="gone"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_menu"
         app:itemIconTint="@color/lavender"

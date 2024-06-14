@@ -1,4 +1,4 @@
-package com.example.index2;
+package com.example.index;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,14 +20,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.index2.databinding.ActivityMainBinding;
+import com.example.index.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 import fragments.*;
+import fragments.calls.CallsFragment;
 import fragments.chat.ChatFragment;
-import fragments.community.CommunityFragment;
+import fragments.pools.PoolsFragment;
+import fragments.redes.RedeFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -110,22 +112,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String toolbarTitle = "";
                 if (itemId == R.id.home) {
                     selectedFragment = new HomeFragment();
-                    toolbarTitle = "reddit";
-                    chev_ic.setVisibility(View.VISIBLE);
+                    toolbarTitle = "Index";
+                    chev_ic.setVisibility(View.GONE);
                 }
-                if (itemId == R.id.notification) {
-                    selectedFragment = new SettingsFragment();
-                    toolbarTitle = "Notifications";
+                if (itemId == R.id.web) {
+                    selectedFragment = new RedeFragment();
+                    toolbarTitle = "Web";
                     chev_ic.setVisibility(View.GONE);
                 }
                 if (itemId == R.id.chat) {
-                    selectedFragment = new ChatFragment();
+                    selectedFragment = new CallsFragment();
                     toolbarTitle = "Chats";
                     chev_ic.setVisibility(View.GONE);
                 }
-                if (itemId == R.id.community) {
-                    selectedFragment = new CommunityFragment();
-                    toolbarTitle = "Communitys";
+                if (itemId == R.id.polls) {
+                    selectedFragment = new PoolsFragment();
+                    toolbarTitle = "Polls";
                     chev_ic.setVisibility(View.GONE);
                 }
 
@@ -147,8 +149,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .replace(R.id.fragment_container, homeFragment)
                     .commit();
             dynamicTitle = findViewById(R.id.dinamicTittle);
-            dynamicTitle.setText("reddit");
-            chev_ic.setVisibility(View.VISIBLE);
+            dynamicTitle.setText("Index");
+            chev_ic.setVisibility(View.GONE);
         }
 
     }

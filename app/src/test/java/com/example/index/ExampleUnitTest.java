@@ -1,4 +1,4 @@
-package com.example.index2;
+package com.example.index;
 
 import org.junit.Test;
 

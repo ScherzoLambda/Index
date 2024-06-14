@@ -2,16 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-
         android:id="@+id/home"
-        android:icon="@drawable/home_ic"
-        android:title="Início"
+        android:icon="@drawable/ic_compass"
+        android:title="Indice"
         app:itemTextAppearanceInactive="@style/MenuTextAppearanceInactive"
         app:itemTextAppearanceActive="@style/MenuTextAppearanceActive"/>
     <item
-        android:id="@+id/community"
-        android:icon="@drawable/group_svgrepo_com"
-        android:title="Comunidades"
+        android:id="@+id/web"
+        android:icon="@drawable/ic_web"
+        android:title="Web"
         app:itemTextAppearanceInactive="@style/MenuTextAppearanceInactive"
         app:itemTextAppearanceActive="@style/MenuTextAppearanceActive"/>
     <item
@@ -28,9 +27,9 @@
         app:itemTextAppearanceActive="@style/MenuTextAppearanceActive" />
 
     <item
-        android:id="@+id/notification"
-        android:icon="@drawable/bell_svgrepo_com"
-        android:title="Notificações"
+        android:id="@+id/polls"
+        android:icon="@drawable/group_svgrepo_com"
+        android:title="Polls"
         app:itemTextAppearanceInactive="@style/MenuTextAppearanceInactive"
         app:itemTextAppearanceActive="@style/MenuTextAppearanceActive"/>
 </menu>
