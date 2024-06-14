@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MultiNavs"
+rootProject.name = "Index2"
 include(":app")
  

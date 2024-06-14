@@ -1,4 +1,4 @@
-package com.example.multinavs;
+package com.example.index2;
 
 import org.junit.Test;
 
