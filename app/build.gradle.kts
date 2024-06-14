@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.multinavs"
+    namespace = "com.example.index2"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.multinavs"
+        applicationId = "com.example.index2"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
