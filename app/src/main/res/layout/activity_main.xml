@@ -106,7 +106,7 @@
                 app:itemIconTint="@color/Mediumseagreen"
                 app:itemTextColor="@color/Mediumseagreen"
                 app:itemTextAppearanceActiveBoldEnabled="true"
-                app:itemIconSize="32dp"
+                app:itemIconSize="35dp"
                 app:labelVisibilityMode="labeled"/>
         </LinearLayout>
 
@@ -165,12 +165,13 @@
         android:layout_height="match_parent"
         android:id="@+id/nav_perfil"
         android:layout_gravity="end"
-        android:background="#483D8B"
+        android:background="@color/Mediumseagreen"
         app:headerLayout="@layout/nav_profile_header"
         android:fitsSystemWindows="true"
         app:menu="@menu/nav_profile_menu"
+        app:itemTextAppearance="@style/ProfileTextAppearActive"
         app:itemIconTint="@color/lavender"
-        app:itemTextColor="@color/lavender"/>
+        app:itemTextColor="@color/black"/>
 
 
 

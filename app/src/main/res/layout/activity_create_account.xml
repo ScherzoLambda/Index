@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateAccountActivity"
+    android:background="@color/Mediumseagreen">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/splash_logo"
+            android:layout_width="151dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_compass"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:textColor="@color/white"
+            android:id="@+id/nomeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome"
+            android:textColorHint="@color/alice"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/loginEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Login"
+            android:textColorHint="@color/alice"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:textColorHint="@color/alice"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:textColorHint="@color/alice"
+            android:inputType="textPassword"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/createAccountButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Criar Conta"
+            android:textColorHint="@color/alice"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"/>
+    </LinearLayout>
+</RelativeLayout>

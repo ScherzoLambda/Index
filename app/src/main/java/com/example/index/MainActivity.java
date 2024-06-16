@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -27,7 +29,6 @@ import com.google.android.material.navigation.NavigationView;
 
 import fragments.*;
 import fragments.calls.CallsFragment;
-import fragments.chat.ChatFragment;
 import fragments.pools.PoolsFragment;
 import fragments.redes.RedeFragment;
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     ActivityMainBinding binding;
     private DrawerLayout drawerLayout;
+    private SharedPreferences sharedPreferences;
     Toolbar toolbar;
     LinearLayout title_id;
     TextView dynamicTitle;
@@ -42,16 +44,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ImageView chev_ic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = CommomUtils.getSharedPreference(this);
         super.onCreate(savedInstanceState);
+        dynamicTitle = findViewById(R.id.dinamicTittle);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+
+        if (!isLoggedIn) {
+            // Redirecionar para LoginActivity se o usuário não estiver logado
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         chev_ic = findViewById(R.id.ic_chevron);
         drawerLayout = findViewById(R.id.drawer_layout);
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_perfil);
         navigationView.setNavigationItemSelectedListener(this);
 
         ImageButton menu_left = findViewById(R.id.menu_left);
@@ -107,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;
                 int itemId = item.getItemId();
-                TextView dynamicTitle = findViewById(R.id.dinamicTittle);
+
 
                 String toolbarTitle = "";
                 if (itemId == R.id.home) {
@@ -160,16 +173,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int itemId = item.getItemId();
         Log.d("MainActivity", "Selected item ID: " + itemId); // Log para depuração
 
-        if (itemId == R.id.nav_Profile) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-        } else if (itemId == R.id.nav_settings) {
+        if (itemId == R.id.nav_perfil) {
+            dynamicTitle.setText("Perfil");
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+            drawerLayout.closeDrawer(GravityCompat.END);
+        } else if (itemId == R.id.nav_saved) {
+            dynamicTitle.setText("Salvos");
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SavedFragment()).commit();
+            drawerLayout.closeDrawer(GravityCompat.END);
+        }else if (itemId == R.id.nav_premium) {
+            dynamicTitle.setText("Index Premium");
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PremiumFragment()).commit();
+            drawerLayout.closeDrawer(GravityCompat.END);
+        } else if (itemId == R.id.nav_history) {
+            dynamicTitle.setText("Histórico");
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HistoryFragment()).commit();
+            drawerLayout.closeDrawer(GravityCompat.END);
+        } else if (itemId == R.id.nav_config) {
+            dynamicTitle.setText("Configurações");
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
-        } else if (itemId == R.id.nav_share) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ShareFragment()).commit();
-        } else if (itemId == R.id.nav_about) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit();
-        } else if (itemId == R.id.nav_logout) {
+            drawerLayout.closeDrawer(GravityCompat.END);
+        } else if (itemId == R.id.logout) {
             Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show();
+            redirectLogin();
         } else {
             throw new IllegalStateException("Unexpected value: " + itemId);
         }
@@ -238,6 +264,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    public void redirectLogin(){
+        sharedPreferences.edit().putBoolean("isLoggedIn", false).apply();
+
+        // Iniciar a LoginActivity
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+
+        // Encerrar a atividade atual
+        finish();
+    }
 
 /*    private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();

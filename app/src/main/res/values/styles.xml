@@ -10,6 +10,11 @@
         <item name="android:textSize">12sp</item> <!-- Tamanho do texto fixo -->
         <item name="android:textColor">@color/Mediumseagreen</item> <!-- Cor do texto ativo -->
     </style>
+    <style name="ProfileTextAppearActive">
+        <item name="fontFamily">@font/redditsanscondensedbold</item>
+        <item name="android:textSize">16sp</item> <!-- Tamanho do texto fixo -->
+        <item name="android:textColor">@color/black</item> <!-- Cor do texto ativo -->
+    </style>
 
     <style name="MenuTextAppearanceInactive">
         <item name="android:layout_marginTop">10dp</item>
