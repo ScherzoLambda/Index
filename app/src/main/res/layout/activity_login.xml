@@ -35,10 +35,10 @@
             android:src="@drawable/ic_compass" />
 
         <EditText
-            android:id="@+id/emailEditText"
+            android:id="@+id/loginEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="Login"
             android:textColor="@color/white2"
             android:fontFamily="@font/robotoslab_regular"
             android:inputType="textEmailAddress"
@@ -56,7 +56,7 @@
 
         <Button
             android:id="@+id/loginButton"
-            android:background="@color/black"
+            android:background="@drawable/rounded_button"
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
 
         <Button
             android:textColor="@color/white"
-            android:background="@color/black"
+            android:background="@drawable/rounded_button"
             android:id="@+id/createAccountButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

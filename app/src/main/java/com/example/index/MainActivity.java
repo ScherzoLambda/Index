@@ -3,15 +3,22 @@ package com.example.index;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +34,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
+import constantes.Constants;
 import fragments.*;
 import fragments.calls.CallsFragment;
 import fragments.pools.PoolsFragment;
@@ -37,16 +45,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ActivityMainBinding binding;
     private DrawerLayout drawerLayout;
     private SharedPreferences sharedPreferences;
+
     Toolbar toolbar;
     LinearLayout title_id;
     TextView dynamicTitle;
     RelativeLayout typesFeed;
     ImageView chev_ic;
+
+    TextView user_name;
+
+    View overlayView;
+
+    /**
+     * * A função abaixo cria parametros e definições na criação da tela
+     * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         sharedPreferences = CommomUtils.getSharedPreference(this);
         super.onCreate(savedInstanceState);
         dynamicTitle = findViewById(R.id.dinamicTittle);
+        user_name = findViewById(R.id.username_campo);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -63,10 +81,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         chev_ic = findViewById(R.id.ic_chevron);
         drawerLayout = findViewById(R.id.drawer_layout);
+        /*String user_name1 = "nada";*/
+       // user_name.setText(sharedPreferences.getString(Constants.USERNAME, " ").toString())
+
+
+        // Carregando as SharedPreferences
+
+        String username = sharedPreferences.getString(Constants.USERNAME, "");
+        String mail_ = sharedPreferences.getString(Constants.MAIL, "");
+
+
 
         NavigationView navigationView = findViewById(R.id.nav_perfil);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View headerView = navigationView.getHeaderView(0);
+        TextView usernameTextView = headerView.findViewById(R.id.username_campo);
+        TextView mailTextView = headerView.findViewById(R.id.email_campo);
+        // Atualizando o TextView com o valor carregado das SharedPreferences
+        usernameTextView.setText(username);
+        mailTextView.setText(mail_);
         ImageButton menu_left = findViewById(R.id.menu_left);
         ImageButton profileButton = findViewById(R.id.profile_btn);
         profileButton.setOnClickListener(new View.OnClickListener() {
@@ -168,6 +202,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    /**
+     * A Função abaixo executa as transições disponivies pelas opções dos menus laterais
+    * **/
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
@@ -203,6 +240,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
     @Override
     public void onBackPressed() {
@@ -275,6 +313,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         finish();
     }
 
+    public void callAPIToGetUserInfo(){
+
+    }
 /*    private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

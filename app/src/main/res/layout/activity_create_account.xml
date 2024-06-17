@@ -33,7 +33,7 @@
             android:layout_marginTop="16dp"/>
 
         <EditText
-            android:id="@+id/loginEditText"
+            android:id="@+id/username_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Login"
@@ -58,6 +58,35 @@
             android:textColorHint="@color/alice"
             android:inputType="textPassword"
             android:layout_marginTop="8dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/confirmPass"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:hint="Confirm"
+                android:textColorHint="@color/alice"
+                android:inputType="textPassword"/>
+
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                android:src="@drawable/eye_svgrepo_com"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/telefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Telefone"
+            android:textColorHint="@color/alice"
+            android:inputType="textPassword"
+            android:layout_marginTop="8dp"/>
 
         <Button
             android:id="@+id/createAccountButton"
@@ -65,7 +94,7 @@
             android:layout_height="wrap_content"
             android:text="Criar Conta"
             android:textColorHint="@color/alice"
-            android:background="@color/black"
+            android:background="@drawable/rounded_button"
             android:textColor="@color/white"
             android:layout_marginTop="16dp"/>
     </LinearLayout>

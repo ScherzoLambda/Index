@@ -27,7 +27,7 @@
                 android:src="@drawable/schlambda_img" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/username_campo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -36,7 +36,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/email_campo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
